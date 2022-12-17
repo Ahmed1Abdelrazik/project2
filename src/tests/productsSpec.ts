@@ -8,5 +8,16 @@ describe("Product Model", ()=>{
         expect(store.index).toBeDefined();
     });
 
+    it('adding a product', async function () {
+        const product: Product = {
+            name: "new product",
+            price: '25'
+        }
+        await store.create(product)
+        const products = await store.index()
+        // console.log(product)
+
+      expect(products.length).toBeGreaterThanOrEqual(1);
+    });
 
 });

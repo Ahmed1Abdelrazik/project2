@@ -7,3 +7,11 @@
 
 
 ### Async/Await or Promises have catch statements.
+
+### .env added in gitignore and environment variables are in Readme.md in the las section
+
+### endpoints testing implemented in tests/endpointSpec.ts
+
+### JWT is used for verifing a user when making order or creating a product
+
+### each database action test implemented

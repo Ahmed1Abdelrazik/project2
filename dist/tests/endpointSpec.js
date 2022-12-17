@@ -35,34 +35,64 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var user_1 = require("../models/user");
-var store = new user_1.UserStore();
-describe("User Model", function () {
-    it('should have an index method', function () {
-        expect(store.index).toBeDefined();
-    });
-    it('creating a user', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var product, users;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        product = {
-                            firstname: "mahmoud",
-                            lastname: "mostafa",
-                            password: 'mostafa25'
-                        };
-                        return [4 /*yield*/, store.create(product)];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, store.index()];
-                    case 2:
-                        users = _a.sent();
-                        expect(users.length).toBeGreaterThanOrEqual(1);
-                        return [2 /*return*/];
-                }
-            });
+var supertest_1 = __importDefault(require("supertest"));
+var server_1 = __importDefault(require("../server"));
+var request = (0, supertest_1.default)(server_1.default);
+describe('Test endpoints responses', function () {
+    it('gets the main endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    done();
+                    return [2 /*return*/];
+            }
         });
-    });
+    }); });
+    it('gets the users endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/users')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    done();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('gets the orders endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/orders/1')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    done();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('gets the products orders', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/products')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    done();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

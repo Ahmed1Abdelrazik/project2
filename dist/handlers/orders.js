@@ -46,7 +46,7 @@ var OrderRoutes = function (app) {
 };
 var store = new order_1.OrderStore();
 var show = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var Order;
+    var Order, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -58,14 +58,23 @@ var show = function (_req, res) { return __awaiter(void 0, void 0, void 0, funct
                     res.json("INVALID token ".concat(err));
                     return [2 /*return*/];
                 }
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, store.show(_req.params.id)
                     // console.log('getting Order by id')
                 ];
-            case 1:
+            case 2:
                 Order = _a.sent();
                 // console.log('getting Order by id')
                 res.json(Order);
-                return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 3:
+                err_1 = _a.sent();
+                res.status(400);
+                res.json(err_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); };

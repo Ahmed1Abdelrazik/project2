@@ -14,4 +14,4 @@
 
 ### JWT is used for verifing a user when making order or creating a product
 
-### each database action test implemented
+### each database action test is implemented

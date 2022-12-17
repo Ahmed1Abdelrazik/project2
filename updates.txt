@@ -1,0 +1,9 @@
+### in Readme.md
+	1. In line 3-31: the database schema has been added
+
+	2. In lines 59-68: the structure of the setup of the database has been added
+
+### Api endpoints and datashapes are in Requirements.md
+
+
+### Async/Await or Promises have catch statements.

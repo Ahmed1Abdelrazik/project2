@@ -15,13 +15,23 @@ const store = new ProductStore()
 
 
 const index = async (_req: Request, res:Response)=>{
+    try{
     const Products = await store.index()
     res.json(Products)
+    }catch(err) {
+        res.status(400)
+        res.json(err)
+    }
 }
 const show = async (_req: Request, res: Response)=>{
+    try{
     const Product = await store.show(_req.params.id)
     console.log('getting product by id')
     res.json(Product)
+    }catch(err) {
+    res.status(400)
+    res.json(err)
+    }
 }
 
 
@@ -44,7 +54,7 @@ const create = async (_req: Request, res: Response) => {
     } catch(err) {
         console.log(err)
         res.status(400)
-        res.json(/*err +*/ Product)
+        res.json(err)
     }
 }
 

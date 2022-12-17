@@ -22,9 +22,14 @@ const show = async (_req: Request, res: Response)=>{
         res.json(`INVALID token ${err}`)
         return
     }
-    const Order = await store.show(_req.params.id)
-    // console.log('getting Order by id')
-    res.json(Order)
+    try{
+        const Order = await store.show(_req.params.id)
+        // console.log('getting Order by id')
+        res.json(Order)
+    }catch(err) {
+    res.status(400)
+    res.json(err)
+    }
 }
 
 

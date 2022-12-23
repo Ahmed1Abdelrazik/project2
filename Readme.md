@@ -66,6 +66,11 @@ _the port of database is: 5432_
    after writing the password, to create `new-database`:
    $CREATE DATABASE new-database;
    then all tables will be inserted using migrations
+2. to create new user (`magical_user`):
+   $CREATE USER magical_user WITH PASSWORD '235896';
+3. to grant all privileges to the user:
+   $GRANT ALL PRIVILILEGES ON DATABASE new-database TO magical_user;
+   $GRANT ALL PRIVILILEGES ON DATABASE new-database-test TO magical_user;
 
 # to initialize the server:
 

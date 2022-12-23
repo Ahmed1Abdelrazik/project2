@@ -43,6 +43,7 @@ var order_1 = require("../models/order");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var OrderRoutes = function (app) {
     app.get('/orders/:id', show);
+    app.post('/orders/', create);
 };
 var store = new order_1.OrderStore();
 var show = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -73,6 +74,40 @@ var show = function (_req, res) { return __awaiter(void 0, void 0, void 0, funct
                 err_1 = _a.sent();
                 res.status(400);
                 res.json(err_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+var create = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var Order, newOrder, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                Order = {
+                    status: _req.body.status,
+                    user_id: _req.body.user_id
+                };
+                try {
+                    jsonwebtoken_1.default.verify(_req.body.token, process.env.TOKEN_SECRET);
+                }
+                catch (err) {
+                    res.status(401);
+                    res.json("INVALID token ".concat(err));
+                    return [2 /*return*/];
+                }
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, store.create(Order)];
+            case 2:
+                newOrder = _a.sent();
+                res.json(newOrder);
+                return [3 /*break*/, 4];
+            case 3:
+                err_2 = _a.sent();
+                res.status(400);
+                res.json(err_2);
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }

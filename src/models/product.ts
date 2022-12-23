@@ -43,13 +43,13 @@ export class ProductStore{
           const sql = 'INSERT INTO products ( name , price) VALUES($1, $2) RETURNING *'
     
           const result = await conn.query(sql, [u.name, u.price])
-          const Order = result.rows[0]
+          const Product = result.rows[0]
     
           conn.release()
     
-          return Order
+          return Product
         } catch(err) {
-          throw new Error(`unable create Order (${u.id}): ${err}`)
+          throw new Error(`unable create Product (${u.id}): ${err}`)
         } 
       }
 }

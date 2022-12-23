@@ -42,6 +42,7 @@ describe("User Model", function () {
     it('should have an index method', function () {
         expect(store.index).toBeDefined();
     });
+    //testing users handler
     it('creating a user', function () {
         return __awaiter(this, void 0, void 0, function () {
             var product, users;
@@ -49,9 +50,9 @@ describe("User Model", function () {
                 switch (_a.label) {
                     case 0:
                         product = {
-                            firstname: "mahmoud",
-                            lastname: "mostafa",
-                            password: 'mostafa25'
+                            firstname: "ABC",
+                            lastname: "DEF",
+                            password: 'ABC25'
                         };
                         return [4 /*yield*/, store.create(product)];
                     case 1:

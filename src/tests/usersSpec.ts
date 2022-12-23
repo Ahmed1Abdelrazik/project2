@@ -7,12 +7,12 @@ describe("User Model", ()=>{
     it('should have an index method',()=>{
         expect(store.index).toBeDefined();
     });
-
+    //testing users handler
     it('creating a user', async function () {
         const product: User = {
-            firstname: "mahmoud",
-            lastname: "mostafa",
-            password: 'mostafa25'
+            firstname: "ABC",
+            lastname: "DEF",
+            password: 'ABC25'
         }
         await store.create(product)
         const users = await store.index()

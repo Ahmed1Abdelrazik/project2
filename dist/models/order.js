@@ -69,6 +69,31 @@ var OrderStore = /** @class */ (function () {
             });
         });
     };
+    OrderStore.prototype.create = function (u) {
+        return __awaiter(this, void 0, void 0, function () {
+            var conn, sql, result, Order, err_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
+                        sql = 'INSERT INTO orders ( status , user_id) VALUES($1, $2) RETURNING *';
+                        return [4 /*yield*/, conn.query(sql, [u.status, u.user_id])];
+                    case 2:
+                        result = _a.sent();
+                        Order = result.rows[0];
+                        conn.release();
+                        return [2 /*return*/, Order];
+                    case 3:
+                        err_2 = _a.sent();
+                        throw new Error("unable create Order (".concat(u.id, "): ").concat(err_2));
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return OrderStore;
 }());
 exports.OrderStore = OrderStore;

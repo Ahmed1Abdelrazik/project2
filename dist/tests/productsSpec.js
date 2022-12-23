@@ -42,6 +42,7 @@ describe("Product Model", function () {
     it('should have an index method', function () {
         expect(store.index).toBeDefined();
     });
+    //testing products handler
     it('adding a product', function () {
         return __awaiter(this, void 0, void 0, function () {
             var product, products;
@@ -55,10 +56,12 @@ describe("Product Model", function () {
                         return [4 /*yield*/, store.create(product)];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, store.index()];
+                        return [4 /*yield*/, store.index()
+                            // console.log(product)
+                        ];
                     case 2:
                         products = _a.sent();
-                        console.log(product);
+                        // console.log(product)
                         expect(products.length).toBeGreaterThanOrEqual(1);
                         return [2 /*return*/];
                 }

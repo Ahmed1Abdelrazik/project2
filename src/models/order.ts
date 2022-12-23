@@ -25,6 +25,22 @@ export class OrderStore {
       throw new Error(`cant show Order ${id}: ${err}`)
     }
   }
+  async create(u: Order): Promise<Order> {
+    try {
+
+      const conn = await Client.connect()
+      const sql = 'INSERT INTO orders ( status , user_id) VALUES($1, $2) RETURNING *'
+
+      const result = await conn.query(sql, [u.status, u.user_id])
+      const Order = result.rows[0]
+
+      conn.release()
+
+      return Order
+    } catch(err) {
+      throw new Error(`unable create Order (${u.id}): ${err}`)
+    } 
+  }
 
   
 }

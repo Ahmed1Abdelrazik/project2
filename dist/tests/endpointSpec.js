@@ -41,58 +41,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var server_1 = __importDefault(require("../server"));
-var request = (0, supertest_1.default)(server_1.default);
+var Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ";
+// const request = supertest(app);
 describe('Test endpoints responses', function () {
-    it('gets the main endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
+    it('gets the main endpoint', function (done) {
+        (0, supertest_1.default)(server_1.default)
+            .get('/')
+            .expect(200)
+            .end(function (error) { return (error ? done.fail(error) : done()); });
+    });
+    it('gets the users endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/')];
+                case 0: return [4 /*yield*/, (0, supertest_1.default)(server_1.default)
+                        .get('/users')];
                 case 1:
-                    response = _a.sent();
-                    expect(response.status).toBe(200);
-                    done();
+                    res = _a.sent();
+                    expect(res.text).toEqual('"check the token JsonWebTokenError: jwt must be provided"');
                     return [2 /*return*/];
             }
         });
     }); });
-    it('gets the users endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/users')];
-                case 1:
-                    response = _a.sent();
-                    expect(response.status).toBe(200);
-                    done();
-                    return [2 /*return*/];
-            }
-        });
-    }); });
-    it('gets the orders endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/orders/1')];
-                case 1:
-                    response = _a.sent();
-                    expect(response.status).toBe(200);
-                    done();
-                    return [2 /*return*/];
-            }
-        });
-    }); });
-    it('gets the products orders', function (done) { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/products')];
-                case 1:
-                    response = _a.sent();
-                    expect(response.status).toBe(200);
-                    done();
-                    return [2 /*return*/];
-            }
-        });
-    }); });
+    it('gets the orders endpoint', function (done) {
+        (0, supertest_1.default)(server_1.default)
+            .get('/orders/1')
+            // .set('Authorization', `Bearer ${Token}`)
+            .expect(401) //Unauthorized
+            .end(function (error) { return (error ? done.fail(error) : done()); });
+    });
+    it('gets the products orders', function (done) {
+        (0, supertest_1.default)(server_1.default)
+            .get('/products')
+            .expect(200)
+            .end(function (error) { return (error ? done.fail(error) : done()); });
+    });
 });

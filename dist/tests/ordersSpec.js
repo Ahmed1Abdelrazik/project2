@@ -42,14 +42,24 @@ describe("Orders Model", function () {
     it('should have an show method', function () {
         expect(store.show).toBeDefined();
     });
+    //testing the orders handler (it should pass after we create any order)
     it('showing an order', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var orders;
+            var order, orders;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, store.show('1')];
+                    case 0:
+                        order = {
+                            status: 'active',
+                            user_id: "1",
+                        };
+                        return [4 /*yield*/, store.create(order)];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, store.show('1')];
+                    case 2:
                         orders = _a.sent();
+                        console.log(orders);
                         expect(orders).toEqual(Object({ id: 1, status: 'active', user_id: '1' }));
                         return [2 /*return*/];
                 }

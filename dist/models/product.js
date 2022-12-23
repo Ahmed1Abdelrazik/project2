@@ -94,7 +94,7 @@ var ProductStore = /** @class */ (function () {
     };
     ProductStore.prototype.create = function (u) {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, sql, result, Order, err_3;
+            var conn, sql, result, Product, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -106,12 +106,12 @@ var ProductStore = /** @class */ (function () {
                         return [4 /*yield*/, conn.query(sql, [u.name, u.price])];
                     case 2:
                         result = _a.sent();
-                        Order = result.rows[0];
+                        Product = result.rows[0];
                         conn.release();
-                        return [2 /*return*/, Order];
+                        return [2 /*return*/, Product];
                     case 3:
                         err_3 = _a.sent();
-                        throw new Error("unable create Order (".concat(u.id, "): ").concat(err_3));
+                        throw new Error("unable create Product (".concat(u.id, "): ").concat(err_3));
                     case 4: return [2 /*return*/];
                 }
             });

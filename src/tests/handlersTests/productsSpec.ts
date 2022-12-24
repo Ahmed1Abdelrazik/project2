@@ -1,6 +1,5 @@
 //tesing products handler (endpoints)
 
-
 import request from "supertest";
 import { Product , ProductStore} from "../../models/product";
 const store = new ProductStore()
@@ -23,13 +22,12 @@ describe('Products Handler',()=>{
     const product : Product = {
       name: 'test',
       price: "10",
-  }
+    }
   await store.create(product)
     request(app)
     .get('/products/1')
     .expect(200)
  
   })
-
 
 })

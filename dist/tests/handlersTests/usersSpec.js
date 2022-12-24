@@ -41,9 +41,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
+var user_1 = require("../../models/user");
+var store = new user_1.UserStore();
 var server_1 = __importDefault(require("../../server"));
 var Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ";
-// const request = supertest(app);
 describe('Users Handler', function () {
     it('gets the users endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var res;
@@ -58,4 +59,26 @@ describe('Users Handler', function () {
             }
         });
     }); });
+    it('gets user by id', function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        user = {
+                            firstname: 'nametest',
+                            lastname: "lastname",
+                            password: "pass",
+                        };
+                        return [4 /*yield*/, store.create(user)];
+                    case 1:
+                        _a.sent();
+                        (0, supertest_1.default)(server_1.default)
+                            .get('/products/1')
+                            .expect(200);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    });
 });

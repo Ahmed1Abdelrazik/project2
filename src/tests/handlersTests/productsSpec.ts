@@ -18,7 +18,7 @@ describe('Products Handler',()=>{
     .end((error)=> (error ? done.fail(error): done()));
  
   })
-  it('gets the product by id',  async function(){
+  it('gets the product by id && creating a product',  async function(){
     const product : Product = {
       name: 'test',
       price: "10",

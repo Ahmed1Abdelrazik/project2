@@ -4,29 +4,33 @@ import request from "supertest";
 import { User , UserStore} from "../../models/user";
 const store = new UserStore()
 import app from '../../server';
-const Token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ" 
 
+const Token = {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdG5hbWUiOiJhaG1lZCIsImxhc3RuYW1lIjoib2FtciIsInBhc3N3b3JkIjoiJDJiJDEzJGN5QWtBMzB6elVkQmE0QTB0bm5STHVFUjFpMUtwbk9wV2YzOEZ2QzlqSXRmTVAwMlVnbnkyIn0sImlhdCI6MTY3MTkxMzUxMX0.Av6tJ0t3Gf_TIwr2K6P2B7mHRbhBP0w2AmDKZd1Bx10" };
 
 describe('Users Handler',()=>{
-
-  it('gets the users endpoint', async ()=>{
-    const res = await request(app)
-    .get('/users')
-    expect(res.text).toEqual('"check the token JsonWebTokenError: jwt must be provided"')
-  })
-
-  it('gets user by id',  async function(){
+  it('gets user by id && creating an user',  async function(){
     const user : User = {
-      firstname: 'nametest',
-      lastname: "lastname",
-      password: "pass",
+      firstname: 'ahmed',
+      lastname: "oamr",
+      password: "123",
     }
   await store.create(user)
     request(app)
-    .get('/products/1')
+    .get('/users/1')
     .expect(200)
  
   })
+
+  it('gets the users endpoint', async ()=>{
+    
+    const res = await request(app)
+    .get('/users')
+    .send(Token)
+    expect(res.statusCode).toBe(200)
+
+  })
+
+
 
 
 })

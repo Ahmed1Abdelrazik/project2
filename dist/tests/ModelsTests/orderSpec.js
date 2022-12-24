@@ -40,7 +40,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var order_1 = require("../../models/order");
 var store = new order_1.OrderStore();
 describe("Order Model", function () {
-    it('should have an show method', function () {
+    it('should have show method', function () {
         expect(store.show).toBeDefined();
     });
     //testing the orders handler (it should pass after we create any order)

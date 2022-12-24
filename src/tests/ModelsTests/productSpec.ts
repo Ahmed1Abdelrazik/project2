@@ -1,4 +1,5 @@
 // tesing product model ( database actions )
+
 import { Product, ProductStore } from "../../models/product";
 
 
@@ -8,8 +9,10 @@ describe("Product Model", ()=>{
     it('should have an index method',()=>{
         expect(store.index).toBeDefined();
     });
-    //testing products handler
-    it('adding a product', async function () {
+    it('should have show method',()=>{
+        expect(store.show).toBeDefined();
+    });
+    it('creating a product', async function () {
         const product: Product = {
             name: "new product",
             price: '25'

@@ -1,4 +1,5 @@
 "use strict";
+// tesing product model ( database actions )
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,15 +37,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// tesing product model ( database actions )
 var product_1 = require("../../models/product");
 var store = new product_1.ProductStore();
 describe("Product Model", function () {
     it('should have an index method', function () {
         expect(store.index).toBeDefined();
     });
-    //testing products handler
-    it('adding a product', function () {
+    it('should have show method', function () {
+        expect(store.show).toBeDefined();
+    });
+    it('creating a product', function () {
         return __awaiter(this, void 0, void 0, function () {
             var product, products;
             return __generator(this, function (_a) {

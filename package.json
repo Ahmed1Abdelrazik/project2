@@ -6,10 +6,11 @@
   "scripts": {
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onsuccess",
-    "migrate": "// to migrate up or down db-migrate up or down respectively",
+    "migrate": "//set ENV='test'&& to migrate up or down db-migrate up or down respectively",
     "build": "npx tsc",
     "jasmine": "jasmine",
-    "test": "db-migrate --env test up && yarn run build && jasmine && db-migrate --env test reset",
+    "test": "set ENV=test&&db-migrate --env test up && yarn run build && jasmine && db-migrate --env test reset",
+    "test0": "yarn run build && jasmine ",
     "tsc": "tsc"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.3",

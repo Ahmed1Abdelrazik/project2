@@ -10,7 +10,7 @@
 
 - Index [token required]
 - Show [token required]
-- Create N[token required] (// it creates atoken)
+- Create N[token required] (// it creates a token)
 
 #### Orders
 

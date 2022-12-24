@@ -43,6 +43,9 @@ describe("User Model", function () {
     it('should have an index method', function () {
         expect(store.index).toBeDefined();
     });
+    it('should have show method', function () {
+        expect(store.show).toBeDefined();
+    });
     //testing users handler
     it('creating a user', function () {
         return __awaiter(this, void 0, void 0, function () {

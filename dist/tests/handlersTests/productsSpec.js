@@ -53,7 +53,7 @@ describe('Products Handler', function () {
             .expect(200)
             .end(function (error) { return (error ? done.fail(error) : done()); });
     });
-    it('gets the product by id', function () {
+    it('gets the product by id && creating a product', function () {
         return __awaiter(this, void 0, void 0, function () {
             var product;
             return __generator(this, function (_a) {

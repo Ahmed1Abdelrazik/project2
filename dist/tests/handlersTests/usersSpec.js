@@ -44,22 +44,23 @@ var supertest_1 = __importDefault(require("supertest"));
 var user_1 = require("../../models/user");
 var store = new user_1.UserStore();
 var server_1 = __importDefault(require("../../server"));
-var Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ";
+var Token = { token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdG5hbWUiOiJhaG1lZCIsImxhc3RuYW1lIjoib2FtciIsInBhc3N3b3JkIjoiJDJiJDEzJGN5QWtBMzB6elVkQmE0QTB0bm5STHVFUjFpMUtwbk9wV2YzOEZ2QzlqSXRmTVAwMlVnbnkyIn0sImlhdCI6MTY3MTkxMzUxMX0.Av6tJ0t3Gf_TIwr2K6P2B7mHRbhBP0w2AmDKZd1Bx10" };
 describe('Users Handler', function () {
     it('gets the users endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, (0, supertest_1.default)(server_1.default)
-                        .get('/users')];
+                        .get('/users')
+                        .send(Token)];
                 case 1:
                     res = _a.sent();
-                    expect(res.text).toEqual('"check the token JsonWebTokenError: jwt must be provided"');
+                    expect(res.statusCode).toBe(200);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('gets user by id', function () {
+    it('gets user by id && creating an user', function () {
         return __awaiter(this, void 0, void 0, function () {
             var user;
             return __generator(this, function (_a) {
@@ -74,7 +75,7 @@ describe('Users Handler', function () {
                     case 1:
                         _a.sent();
                         (0, supertest_1.default)(server_1.default)
-                            .get('/products/1')
+                            .get('/users/1')
                             .expect(200);
                         return [2 /*return*/];
                 }

@@ -8,6 +8,9 @@ describe("User Model", ()=>{
     it('should have an index method',()=>{
         expect(store.index).toBeDefined();
     });
+    it('should have show method',()=>{
+        expect(store.show).toBeDefined();
+    });
     //testing users handler
     it('creating a user', async function () {
         const product: User = {

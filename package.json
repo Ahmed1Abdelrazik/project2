@@ -9,7 +9,7 @@
     "migrate": "// to migrate up or down db-migrate up or down respectively",
     "build": "npx tsc",
     "jasmine": "jasmine",
-    "test": "yarn run build & yarn jasmine",
+    "test": "db-migrate --env test up && yarn run build && jasmine && db-migrate --env test reset",
     "tsc": "tsc"
   },
   "repository": {

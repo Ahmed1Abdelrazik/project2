@@ -1,10 +1,13 @@
 ### NEW UPDATES ###:
 
-    1. instructions to set up database through PSQL have been updated (in lines 69-73)
-    2. tests for handlers (orders, products, users) are in (ordersSpec, productSpec, usersSpec)
-    3. tests is passing successfully
+    1. tests runs through its own database (new-database-test)
+    2. handlers and models tests implemented
 
 \_Old updates\_\_:
+
+1. instructions to set up database through PSQL have been updated (in lines 69-73)
+2. tests for handlers (orders, products, users) are in (ordersSpec, productSpec, usersSpec)
+3. tests is passing successfully
 
 ### in Readme.md
 

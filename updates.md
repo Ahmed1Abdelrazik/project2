@@ -1,7 +1,7 @@
 ### NEW UPDATES ###:
 
     1. all handlers and models tests have been implemented
-    2. tests is runing through database(new-database-test with ENV = test) then the database is dropped
+    2. tests is running through database(new-database-test with ENV = test) then the database is dropped
 
 \_Old updates\_\_:
 

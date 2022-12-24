@@ -1,4 +1,4 @@
-// tesing models( database actions )
+// tesing user model( database actions )
 
 import { User, UserStore } from "../../models/user";
 

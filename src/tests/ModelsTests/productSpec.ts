@@ -1,4 +1,4 @@
-// tesing models( database actions )
+// tesing product model ( database actions )
 import { Product, ProductStore } from "../../models/product";
 
 

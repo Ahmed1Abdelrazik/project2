@@ -8,7 +8,7 @@ const Token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc
 
 // const request = supertest(app);
 
-describe('Test orders endpoints responses',()=>{
+describe('Orders Handler',()=>{
 
   it('gets the orders endpoint',  (done)=>{
     request(app)

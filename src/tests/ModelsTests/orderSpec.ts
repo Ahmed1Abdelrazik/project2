@@ -1,11 +1,11 @@
-// tesing models( database actions )
+// tesing order model( database actions )
 
 import { Order, OrderStore } from "../../models/order";
 
 
 const store = new OrderStore()
 
-describe("Orders Model", ()=>{
+describe("Order Model", ()=>{
     it('should have an show method',()=>{
         expect(store.show).toBeDefined();
     });

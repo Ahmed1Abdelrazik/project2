@@ -8,7 +8,7 @@ const Token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc
 
 // const request = supertest(app);
 
-describe('Test Users endpoints responses',()=>{
+describe('Users Handler',()=>{
 
 
   it('gets the users endpoint', async ()=>{

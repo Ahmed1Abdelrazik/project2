@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // tesing models( database actions )
-var product_1 = require("../models/product");
+var product_1 = require("../../models/product");
 var store = new product_1.ProductStore();
 describe("Product Model", function () {
     it('should have an index method', function () {

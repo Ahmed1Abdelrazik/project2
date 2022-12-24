@@ -1,4 +1,6 @@
-import { Order, OrderStore } from "../models/order";
+// tesing models( database actions )
+
+import { Order, OrderStore } from "../../models/order";
 
 
 const store = new OrderStore()

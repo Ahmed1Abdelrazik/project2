@@ -1,4 +1,5 @@
-import { Product, ProductStore } from "../models/product";
+// tesing models( database actions )
+import { Product, ProductStore } from "../../models/product";
 
 
 const store = new ProductStore()

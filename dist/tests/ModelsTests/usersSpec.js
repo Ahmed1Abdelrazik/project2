@@ -1,4 +1,5 @@
 "use strict";
+// tesing models( database actions )
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,34 +37,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// tesing models( database actions )
-var product_1 = require("../models/product");
-var store = new product_1.ProductStore();
-describe("Product Model", function () {
+var user_1 = require("../../models/user");
+var store = new user_1.UserStore();
+describe("User Model", function () {
     it('should have an index method', function () {
         expect(store.index).toBeDefined();
     });
-    //testing products handler
-    it('adding a product', function () {
+    //testing users handler
+    it('creating a user', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var product, products;
+            var product, users;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         product = {
-                            name: "new product",
-                            price: '25'
+                            firstname: "ABC",
+                            lastname: "DEF",
+                            password: 'ABC25'
                         };
                         return [4 /*yield*/, store.create(product)];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, store.index()
-                            // console.log(product)
-                        ];
+                        return [4 /*yield*/, store.index()];
                     case 2:
-                        products = _a.sent();
-                        // console.log(product)
-                        expect(products.length).toBeGreaterThanOrEqual(1);
+                        users = _a.sent();
+                        expect(users.length).toBeGreaterThanOrEqual(1);
                         return [2 /*return*/];
                 }
             });

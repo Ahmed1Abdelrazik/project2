@@ -10,7 +10,6 @@
     "build": "npx tsc",
     "jasmine": "jasmine",
     "test": "set ENV=test&&db-migrate --env test up && yarn run build && jasmine && db-migrate --env test reset",
-    "test0": "yarn run build && jasmine ",
     "tsc": "tsc"
   },
   "repository": {

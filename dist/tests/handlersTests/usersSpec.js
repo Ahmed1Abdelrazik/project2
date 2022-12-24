@@ -46,6 +46,28 @@ var store = new user_1.UserStore();
 var server_1 = __importDefault(require("../../server"));
 var Token = { token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdG5hbWUiOiJhaG1lZCIsImxhc3RuYW1lIjoib2FtciIsInBhc3N3b3JkIjoiJDJiJDEzJGN5QWtBMzB6elVkQmE0QTB0bm5STHVFUjFpMUtwbk9wV2YzOEZ2QzlqSXRmTVAwMlVnbnkyIn0sImlhdCI6MTY3MTkxMzUxMX0.Av6tJ0t3Gf_TIwr2K6P2B7mHRbhBP0w2AmDKZd1Bx10" };
 describe('Users Handler', function () {
+    it('gets user by id && creating an user', function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        user = {
+                            firstname: 'ahmed',
+                            lastname: "oamr",
+                            password: "123",
+                        };
+                        return [4 /*yield*/, store.create(user)];
+                    case 1:
+                        _a.sent();
+                        (0, supertest_1.default)(server_1.default)
+                            .get('/users/1')
+                            .expect(200);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    });
     it('gets the users endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var res;
         return __generator(this, function (_a) {
@@ -60,26 +82,4 @@ describe('Users Handler', function () {
             }
         });
     }); });
-    it('gets user by id && creating an user', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var user;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        user = {
-                            firstname: 'nametest',
-                            lastname: "lastname",
-                            password: "pass",
-                        };
-                        return [4 /*yield*/, store.create(user)];
-                    case 1:
-                        _a.sent();
-                        (0, supertest_1.default)(server_1.default)
-                            .get('/users/1')
-                            .expect(200);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
 });

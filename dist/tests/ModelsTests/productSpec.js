@@ -1,5 +1,4 @@
 "use strict";
-//tesing products handler (endpoints)
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,39 +35,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var supertest_1 = __importDefault(require("supertest"));
+// tesing product model ( database actions )
 var product_1 = require("../../models/product");
 var store = new product_1.ProductStore();
-var server_1 = __importDefault(require("../../server"));
-var Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ";
-// const request = supertest(app);
-describe('Products Handler', function () {
-    it('gets the products endpoint', function (done) {
-        (0, supertest_1.default)(server_1.default)
-            .get('/products')
-            .expect(200)
-            .end(function (error) { return (error ? done.fail(error) : done()); });
+describe("Product Model", function () {
+    it('should have an index method', function () {
+        expect(store.index).toBeDefined();
     });
-    it('gets the product by id', function () {
+    //testing products handler
+    it('adding a product', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var product;
+            var product, products;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         product = {
-                            name: 'test',
-                            price: "10",
+                            name: "new product",
+                            price: '25'
                         };
                         return [4 /*yield*/, store.create(product)];
                     case 1:
                         _a.sent();
-                        (0, supertest_1.default)(server_1.default)
-                            .get('/products/1')
-                            .expect(200);
+                        return [4 /*yield*/, store.index()
+                            // console.log(product)
+                        ];
+                    case 2:
+                        products = _a.sent();
+                        // console.log(product)
+                        expect(products.length).toBeGreaterThanOrEqual(1);
                         return [2 /*return*/];
                 }
             });

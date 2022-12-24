@@ -17,7 +17,7 @@ describe("Order Model", ()=>{
         }
         await store.create(order)
         const orders =  await store.show('1')
-        console.log(orders)
+        // console.log(orders)
       expect(orders).toEqual(Object({ id: 1, status: 'active', user_id: '1' }));
     });
 

@@ -1,10 +1,17 @@
 //tesing products handler (endpoints)
-
 import request from "supertest";
+import { User } from "../../models/user";
 import { Product , ProductStore} from "../../models/product";
-const store = new ProductStore()
 import app from '../../server';
-const Token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ" 
+
+const store = new ProductStore()
+
+var Token = {token: "" };
+const user : User = {
+  firstname: 'ahmed',
+  lastname: "oamr",
+  password: "123",
+}
 
 // const request = supertest(app);
 const product : Product = {
@@ -19,6 +26,14 @@ const product_token = {
 }
 describe('Products Handler',()=>{
   //testing POST products endpoint
+  beforeAll  (async()=>{
+    const res = await request(app)
+    .post('/users')
+    .send(user)
+    Token.token = res.body
+    product_token.token = res.body
+  })
+
   it('posts products endpoint',  (done)=>{
     request(app)
     .post('/products')

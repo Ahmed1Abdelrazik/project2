@@ -41,7 +41,7 @@ var order_1 = require("../../models/order");
 var store = new order_1.OrderStore();
 describe("Order Model", function () {
     //testing the orders handler (it should pass after we create any order)
-    it('showing an order', function () {
+    it('showing an order after creating it', function () {
         return __awaiter(this, void 0, void 0, function () {
             var order, orders;
             return __generator(this, function (_a) {

@@ -1,5 +1,4 @@
 "use strict";
-//tesing products handler (endpoints)
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -40,11 +39,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+//tesing products handler (endpoints)
 var supertest_1 = __importDefault(require("supertest"));
 var product_1 = require("../../models/product");
-var store = new product_1.ProductStore();
 var server_1 = __importDefault(require("../../server"));
-var Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ";
+var store = new product_1.ProductStore();
+var Token = { token: "" };
+var user = {
+    firstname: 'ahmed',
+    lastname: "oamr",
+    password: "123",
+};
 // const request = supertest(app);
 var product = {
     name: 'PORODUCT#1',
@@ -57,6 +62,21 @@ var product_token = {
 };
 describe('Products Handler', function () {
     //testing POST products endpoint
+    beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, supertest_1.default)(server_1.default)
+                        .post('/users')
+                        .send(user)];
+                case 1:
+                    res = _a.sent();
+                    Token.token = res.body;
+                    product_token.token = res.body;
+                    return [2 /*return*/];
+            }
+        });
+    }); });
     it('posts products endpoint', function (done) {
         (0, supertest_1.default)(server_1.default)
             .post('/products')

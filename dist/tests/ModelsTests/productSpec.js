@@ -69,11 +69,13 @@ describe("Product Model", function () {
         var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.index()];
+                case 0: return [4 /*yield*/, store.index()
+                    // console.log(data)
+                ];
                 case 1:
                     data = _a.sent();
-                    console.log(data);
-                    expect(data).toContain(Object({ id: 3, name: 'new product', price: 25 }));
+                    // console.log(data)
+                    expect(data).toContain(Object({ id: 1 | 2 | 3, name: 'new product', price: 25 }));
                     return [2 /*return*/];
             }
         });

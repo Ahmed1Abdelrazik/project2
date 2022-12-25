@@ -18,7 +18,7 @@ describe("User Model", ()=>{
     });
     it('should have an index method',async()=>{
         const index = await store.index();
-        expect(index.length).toBeLessThan(4);
+        expect(index.length).toBeLessThan(7);
     });
     it('should have show method',async()=>{
         const data =  await store.show('1');

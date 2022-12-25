@@ -70,7 +70,7 @@ describe("User Model", function () {
                 case 0: return [4 /*yield*/, store.index()];
                 case 1:
                     index = _a.sent();
-                    expect(index.length).toBeLessThan(4);
+                    expect(index.length).toBeLessThan(7);
                     return [2 /*return*/];
             }
         });

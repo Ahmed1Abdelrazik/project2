@@ -40,13 +40,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var user_1 = require("../../models/user");
 var store = new user_1.UserStore();
 describe("User Model", function () {
-    it('should have an index method', function () {
-        expect(store.index).toBeDefined();
-    });
-    it('should have show method', function () {
-        expect(store.show).toBeDefined();
-    });
-    //testing users handler
     it('creating a user', function () {
         return __awaiter(this, void 0, void 0, function () {
             var product, users;
@@ -70,4 +63,29 @@ describe("User Model", function () {
             });
         });
     });
+    it('should have an index method', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var index;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, store.index()];
+                case 1:
+                    index = _a.sent();
+                    expect(index.length).toBeLessThan(4);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should have show method', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, store.show('1')];
+                case 1:
+                    data = _a.sent();
+                    // console.log(data)
+                    expect(data).toEqual(Object({ firstname: 'ahmed', lastname: 'oamr' }));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

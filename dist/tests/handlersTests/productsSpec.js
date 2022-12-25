@@ -46,7 +46,24 @@ var store = new product_1.ProductStore();
 var server_1 = __importDefault(require("../../server"));
 var Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyNywiZmlyc3RuYW1lIjoiWEQiLCJwYXNzd29yZCI6IiQyYiQxMyRIVUQ5cEg2TmZTMDB1ekF5TjJSVy8uUWhIa0NmMnZXSUExc3JERmg2ZDcvanJyM0RqTlEzZSIsImxhc3RuYW1lIjoiSEhIIn0sImlhdCI6MTY3MTgxNjE3Nn0.tYEb-Fna31nMDEOogeRUSks-IJc4kGF3fAWPQ7c93YQ";
 // const request = supertest(app);
+var product = {
+    name: 'PORODUCT#1',
+    price: "100",
+};
+var product_token = {
+    name: 'PORODUCT#1',
+    price: "100",
+    token: Token
+};
 describe('Products Handler', function () {
+    //testing POST products endpoint
+    it('posts products endpoint', function (done) {
+        (0, supertest_1.default)(server_1.default)
+            .post('/products')
+            .send(product_token)
+            .expect(200)
+            .end(function (error) { return (error ? done.fail(error) : done()); });
+    });
     it('gets the products endpoint', function (done) {
         (0, supertest_1.default)(server_1.default)
             .get('/products')
@@ -55,15 +72,9 @@ describe('Products Handler', function () {
     });
     it('gets the product by id && creating a product', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var product;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        product = {
-                            name: 'test',
-                            price: "10",
-                        };
-                        return [4 /*yield*/, store.create(product)];
+                    case 0: return [4 /*yield*/, store.create(product)];
                     case 1:
                         _a.sent();
                         (0, supertest_1.default)(server_1.default)

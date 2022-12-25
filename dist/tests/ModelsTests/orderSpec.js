@@ -40,9 +40,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var order_1 = require("../../models/order");
 var store = new order_1.OrderStore();
 describe("Order Model", function () {
-    it('should have show method', function () {
-        expect(store.show).toBeDefined();
-    });
     //testing the orders handler (it should pass after we create any order)
     it('showing an order', function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -69,4 +66,16 @@ describe("Order Model", function () {
             });
         });
     });
+    it('should have show method', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, store.show('1')];
+                case 1:
+                    data = _a.sent();
+                    expect(data).toEqual(Object({ id: 1, status: 'active', user_id: '1' }));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

@@ -40,12 +40,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var product_1 = require("../../models/product");
 var store = new product_1.ProductStore();
 describe("Product Model", function () {
-    it('should have an index method', function () {
-        expect(store.index).toBeDefined();
-    });
-    it('should have show method', function () {
-        expect(store.show).toBeDefined();
-    });
     it('creating a product', function () {
         return __awaiter(this, void 0, void 0, function () {
             var product, products;
@@ -71,4 +65,32 @@ describe("Product Model", function () {
             });
         });
     });
+    it('should have an index method', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, store.index()];
+                case 1:
+                    data = _a.sent();
+                    console.log(data);
+                    expect(data).toContain(Object({ id: 3, name: 'new product', price: 25 }));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should have show method', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var SHOW;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, store.show('1')
+                    // console.log(Log)
+                ];
+                case 1:
+                    SHOW = _a.sent();
+                    // console.log(Log)
+                    expect(SHOW).toEqual(Object({ id: 1, name: 'PORODUCT#1', price: 100 }));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

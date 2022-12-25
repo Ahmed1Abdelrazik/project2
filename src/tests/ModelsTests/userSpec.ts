@@ -5,13 +5,6 @@ import { User, UserStore } from "../../models/user";
 const store = new UserStore()
 
 describe("User Model", ()=>{
-    it('should have an index method',()=>{
-        expect(store.index).toBeDefined();
-    });
-    it('should have show method',()=>{
-        expect(store.show).toBeDefined();
-    });
-    //testing users handler
     it('creating a user', async function () {
         const product: User = {
             firstname: "ABC",
@@ -23,6 +16,16 @@ describe("User Model", ()=>{
 
       expect(users.length).toBeGreaterThanOrEqual(1);
     });
+    it('should have an index method',async()=>{
+        const index = await store.index();
+        expect(index.length).toBeLessThan(4);
+    });
+    it('should have show method',async()=>{
+        const data =  await store.show('1');
+        // console.log(data)
+        expect(data).toEqual(Object({ firstname: 'ahmed', lastname: 'oamr' }));
+    });
+
 
 
 });

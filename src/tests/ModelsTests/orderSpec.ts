@@ -7,7 +7,7 @@ const store = new OrderStore()
 
 describe("Order Model", ()=>{
         //testing the orders handler (it should pass after we create any order)
-        it('showing an order', async function () {
+        it('showing an order after creating it', async function () {
             const order : Order = {
                 status: 'active',
                 user_id: "1",

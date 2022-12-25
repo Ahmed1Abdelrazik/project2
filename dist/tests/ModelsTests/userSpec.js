@@ -42,16 +42,16 @@ var store = new user_1.UserStore();
 describe("User Model", function () {
     it('creating a user', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var product, users;
+            var user, users;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        product = {
+                        user = {
                             firstname: "ABC",
                             lastname: "DEF",
                             password: 'ABC25'
                         };
-                        return [4 /*yield*/, store.create(product)];
+                        return [4 /*yield*/, store.create(user)];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, store.index()];

@@ -6,12 +6,12 @@ const store = new UserStore()
 
 describe("User Model", ()=>{
     it('creating a user', async function () {
-        const product: User = {
+        const user: User = {
             firstname: "ABC",
             lastname: "DEF",
             password: 'ABC25'
         }
-        await store.create(product)
+        await store.create(user)
         const users = await store.index()
 
       expect(users.length).toBeGreaterThanOrEqual(1);

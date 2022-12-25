@@ -47,7 +47,6 @@ var user = {
     password: "123",
 };
 var supertest_1 = __importDefault(require("supertest"));
-// const request = supertest(app);
 describe('Orders Handler', function () {
     beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
         var res;

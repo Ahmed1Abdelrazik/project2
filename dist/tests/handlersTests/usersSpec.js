@@ -53,11 +53,15 @@ var user = {
 describe('Users Handler', function () {
     // testing POST users endpoint
     beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
+        var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.create(user)];
+                case 0: return [4 /*yield*/, (0, supertest_1.default)(server_1.default)
+                        .post('/users')
+                        .send(user)];
                 case 1:
-                    _a.sent();
+                    res = _a.sent();
+                    Token.token = res.body;
                     return [2 /*return*/];
             }
         });
@@ -71,8 +75,6 @@ describe('Users Handler', function () {
                         .send(user)];
                 case 1:
                     res = _a.sent();
-                    Token.token = res.body;
-                    // console.log(Token)
                     expect(res.statusCode).toBe(200);
                     return [2 /*return*/];
             }

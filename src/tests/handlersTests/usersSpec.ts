@@ -14,22 +14,21 @@ const user : User = {
 describe('Users Handler',()=>{
   // testing POST users endpoint
   beforeAll  (async()=>{
-    await store.create(user)
-
-  })
-  it('posts users endpoint', async ()=>{
-    
+    //to have a token
     const res = await request(app)
     .post('/users')
     .send(user)
     Token.token = res.body
-    // console.log(Token)
+  })
+  it('posts users endpoint', async ()=>{
+    const res = await request(app)
+    .post('/users')
+    .send(user)
     expect(res.statusCode).toBe(200)
 
   })
+
   it('gets user by id && creating an user',  async function(){
-
-
     request(app)
     .get('/users/1')
     .expect(200)
@@ -44,8 +43,5 @@ describe('Users Handler',()=>{
     expect(res.statusCode).toBe(200)
 
   })
-
-
-
 
 })

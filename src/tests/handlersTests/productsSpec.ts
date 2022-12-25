@@ -27,6 +27,7 @@ const product_token = {
 describe('Products Handler',()=>{
   //testing POST products endpoint
   beforeAll  (async()=>{
+    //to save a token
     const res = await request(app)
     .post('/users')
     .send(user)

@@ -14,6 +14,7 @@ import request from "supertest";
 
 describe('Orders Handler',()=>{
   beforeAll  (async()=>{
+    //to save a token
     const res = await request(app)
     .post('/users')
     .send(user)

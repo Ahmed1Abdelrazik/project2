@@ -125,12 +125,12 @@ run the following commands in terminal
 
 ### environmet variables:
 
-POSTGRES_HOST = 127.0.0.1
-POSTGRES_DB = new-database
-POSTGRES_TEST_DB = new-database-test
-POSTGRES_USER = magical_user
-POSTGRES_PASSWORD = 235896
-ENV=dev
-BCRYPT_PASSWORD=the-secret-password
-SALT_ROUNDS=10
-TOKEN_SECRET = ahmed123!
+POSTGRES_HOST = *****
+POSTGRES_DB = **
+POSTGRES_TEST_DB = ***
+POSTGRES_USER = ***
+POSTGRES_PASSWORD = ***
+ENV=***
+BCRYPT_PASSWORD=**
+SALT_ROUNDS=**
+TOKEN_SECRET = **
